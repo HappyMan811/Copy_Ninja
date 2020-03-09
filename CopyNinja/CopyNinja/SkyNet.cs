@@ -3,12 +3,12 @@ using RestSharp.Authenticators;
 using System;
 using System.Text;
 
-namespace CopyNinja
+namespace Implementation
 {
-    public class CopyNinja
+    public class SkyNet
     {
 
-        public static void Copy(string url, string username, string password, string filename, string localPath)
+        public static void SkyNetPost(string url, string username, string password, string filename, string localPath)
         {
             var client = new RestClient(url)
             {
@@ -29,7 +29,7 @@ namespace CopyNinja
             var response = client.Execute(request);
         }
 
-        public static void Paste(string url, string username, string password, string skylink)
+        public static void SkyNetGet(string url, string username, string password, string skylink)
         {
             var client = new RestClient(url)
             {

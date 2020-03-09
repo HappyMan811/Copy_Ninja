@@ -13,7 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CopyNinja\CopyNinja.csproj" />
+    <ProjectReference Include="..\CopyNinja\SkyNetLib.csproj" />
   </ItemGroup>
 
 </Project>
