@@ -8,7 +8,7 @@ namespace CopyNinja
     public class CopyNinja
     {
 
-        public static void Copy(string url, string username,string password,string filename, string localPath)
+        public static void Copy(string url, string username, string password, string filename, string localPath)
         {
             var client = new RestClient(url)
             {
@@ -27,7 +27,29 @@ namespace CopyNinja
             request.AddFile("file", localPath);
 
             var response = client.Execute(request);
-        } 
+        }
+
+        public static void Paste(string url, string username, string password, string skylink)
+        {
+            var client = new RestClient(url)
+            {
+                UserAgent = "Sia-Agent",
+                Authenticator = new HttpBasicAuthenticator(username, password)
+            };
+
+            var request = new RestRequest()
+            {
+                Method = Method.GET,
+                RequestFormat = DataFormat.Json
+            };
+
+            request.Resource = "/{sialink}";
+            request.AddQueryParameter("attachment", "false");
+            request.AddParameter("sialink", skylink, ParameterType.UrlSegment);
+
+            var response = client.Execute(request);
+
+        }
 
 
 
