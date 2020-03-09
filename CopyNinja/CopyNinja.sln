@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SkyNetLib", "CopyNinja\SkyN
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTestProject1", "UnitTestProject1\UnitTestProject1.csproj", "{7E693EEF-F7A5-45DD-AD2E-9D31BA5A0245}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CopyNinjaLib", "CopyNinjaLib\CopyNinjaLib.csproj", "{879B3E07-D82B-42B8-A9AF-FADA4D1FDD38}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{7E693EEF-F7A5-45DD-AD2E-9D31BA5A0245}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7E693EEF-F7A5-45DD-AD2E-9D31BA5A0245}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7E693EEF-F7A5-45DD-AD2E-9D31BA5A0245}.Release|Any CPU.Build.0 = Release|Any CPU
+		{879B3E07-D82B-42B8-A9AF-FADA4D1FDD38}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{879B3E07-D82B-42B8-A9AF-FADA4D1FDD38}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{879B3E07-D82B-42B8-A9AF-FADA4D1FDD38}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{879B3E07-D82B-42B8-A9AF-FADA4D1FDD38}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
