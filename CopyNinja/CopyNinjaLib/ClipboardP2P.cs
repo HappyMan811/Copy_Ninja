@@ -1,66 +1,84 @@
-﻿using P2PNET.TransportLayer;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
-using System.Timers;
+﻿using Roniz.WCF.P2P.Messages.Presence;
+using Roniz.WCF.P2P.Sync;
+using Roniz.WCF.P2P.Sync.Enums;
+using Roniz.WCF.P2P.Sync.Interfaces;
+using Roniz.WCF.P2P.Sync.Messages;
+using Roniz.WCF.P2P.Sync.Messages.BusinessLogic;
+using System.Linq;
+using System.Net.NetworkInformation;
 
 namespace CopyNinjaLib
 {
-    public class ClipboardP2P
+    public class ClipboardP2P : ISynchronizationBusinessLogic
     {
-        private int portNumber;        
-        private Timer timer;
-        private TransportManager manager;
-        private List<string> peers;
+        public bool IsNeedFullSynchronization { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
 
-        /// <summary>
-        /// Default constructor
-        /// </summary>
-        public ClipboardP2P(int portNumber = 8080)
+        //------------------------------------------------------------------------//
+
+        public ClipboardP2P()
         {
-            manager = new TransportManager(portNumber, true);
 
-            timer = new Timer();
         }
 
-        public async void Run()
+
+        public FullPresenceInfo ProvideFullPresenceInfo()
         {
-            manager.MsgReceived += (obj, args) =>
-            {
-
-            };
-
-            manager.PeerChange += (obj, args) =>
-            {
-                foreach (var item in args.Peers)
-                {
-                    peers.Add(item.IpAddress);
-                }
-            };
-
-            await manager.StartAsync();
-
-            StartBroadcasting();
+            throw new System.NotImplementedException();
         }
 
-        public async Task SendMessage(string message)
+        public void OnOnlineAnnouncementReceived(FullPresenceInfo fullPresenceInfo)
         {
-            var messagebytes = Encoding.ASCII.GetBytes(message);
-
-            await manager.SendToAllPeersAsyncTCP(messagebytes);
+            throw new System.NotImplementedException();
         }
 
-        private void StartBroadcasting()
+        public CompactPresenceInfo ProvideCompactPresenceInfo()
         {
-            var bytes = Encoding.ASCII.GetBytes("ping");
+            throw new System.NotImplementedException();
+        }
 
-            timer.Elapsed += (obj, args) =>
-            {
-                manager.SendToAllPeersAsyncUDP(bytes);
-            };
+        public void OnOfflineAnnouncementReceived(CompactPresenceInfo compactPresenceInfo)
+        {
+            throw new System.NotImplementedException();
+        }
 
-            timer.Interval = 1000;
-            timer.Start();
+        public void OnPresenceInfoChangedReceived(FullPresenceInfo fullPresenceInfo)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public BusinessLogicMessageBase ProvideFullSynchronizationDetailResponse()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void OnCommunicationStateChanged(SynchronizationCommunicationState oldState, SynchronizationCommunicationState newState)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void OnSynchronizationDetailsResponseReceived(BusinessLogicMessageBase synchronizationDetailsResponse)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void OnUpdateReceived(BusinessLogicMessageBase stateMessage)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public BusinessLogicMessageBase ProvideSynchronizationDetailRequest(BusinessLogicMessageBase synchronizationResponse)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public BusinessLogicMessageBase ProvideSynchronizationDetailResponse(BusinessLogicMessageBase synchronizationDetailsRequest)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public BusinessLogicMessageBase ProvideSynchronizationResponse(SynchronizationRequest synchronizationRequest)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

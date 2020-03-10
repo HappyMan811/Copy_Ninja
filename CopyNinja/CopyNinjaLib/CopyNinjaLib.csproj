@@ -31,26 +31,31 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <HintPath>..\packages\NLog.4.6.8\lib\net45\NLog.dll</HintPath>
     </Reference>
-    <Reference Include="P2PNET, Version=1.5.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\SquidInc.P2PNET.1.5.0\lib\portable45-net45+win8+wp8+wpa81\P2PNET.dll</HintPath>
+    <Reference Include="Roniz.Diagnostics.Logging, Version=1.0.0.9, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\P2PSync.1.0.0.22\lib\NET40\Roniz.Diagnostics.Logging.dll</HintPath>
     </Reference>
-    <Reference Include="PCLStorage, Version=1.0.2.0, Culture=neutral, PublicKeyToken=286fe515a2c35b64, processorArchitecture=MSIL">
-      <HintPath>..\packages\PCLStorage.1.0.2\lib\net45\PCLStorage.dll</HintPath>
+    <Reference Include="Roniz.WCF.P2P.Channels, Version=1.0.0.20, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\P2PSync.1.0.0.22\lib\NET40\Roniz.WCF.P2P.Channels.dll</HintPath>
     </Reference>
-    <Reference Include="PCLStorage.Abstractions, Version=1.0.2.0, Culture=neutral, PublicKeyToken=286fe515a2c35b64, processorArchitecture=MSIL">
-      <HintPath>..\packages\PCLStorage.1.0.2\lib\net45\PCLStorage.Abstractions.dll</HintPath>
+    <Reference Include="Roniz.WCF.P2P.Messages, Version=1.0.0.20, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\P2PSync.1.0.0.22\lib\NET40\Roniz.WCF.P2P.Messages.dll</HintPath>
     </Reference>
-    <Reference Include="Sockets.Plugin, Version=2.0.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\rda.SocketsForPCL.2.0.2\lib\net45\Sockets.Plugin.dll</HintPath>
+    <Reference Include="Roniz.WCF.P2P.Sync, Version=1.0.0.20, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\P2PSync.1.0.0.22\lib\NET40\Roniz.WCF.P2P.Sync.dll</HintPath>
     </Reference>
-    <Reference Include="Sockets.Plugin.Abstractions, Version=2.0.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\rda.SocketsForPCL.2.0.2\lib\net45\Sockets.Plugin.Abstractions.dll</HintPath>
+    <Reference Include="ServiceModelEx, Version=4.0.0.1, Culture=neutral, PublicKeyToken=d0f8277329bba7a0, processorArchitecture=MSIL">
+      <HintPath>..\packages\P2PSync.1.0.0.22\lib\NET40\ServiceModelEx.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -60,6 +65,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ClipboardP2P.cs" />
+    <Compile Include="CopyNinja.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
