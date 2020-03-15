@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{879B3E07-D82B-42B8-A9AF-FADA4D1FDD38}</ProjectGuid>
+    <ProjectGuid>{02904909-30AE-4738-B9AB-FAA5CD2EB094}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CopyNinjaLib</RootNamespace>
-    <AssemblyName>CopyNinjaLib</AssemblyName>
+    <RootNamespace>SkyNetLib</RootNamespace>
+    <AssemblyName>SkyNetLib</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -17,7 +17,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\Instalation\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -30,32 +30,19 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>SkyNetLib.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
   <ItemGroup>
-    <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
-      <HintPath>..\packages\NLog.4.6.8\lib\net45\NLog.dll</HintPath>
-    </Reference>
-    <Reference Include="Roniz.Diagnostics.Logging, Version=1.0.0.9, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\P2PSync.1.0.0.22\lib\NET40\Roniz.Diagnostics.Logging.dll</HintPath>
-    </Reference>
-    <Reference Include="Roniz.WCF.P2P.Channels, Version=1.0.0.20, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\P2PSync.1.0.0.22\lib\NET40\Roniz.WCF.P2P.Channels.dll</HintPath>
-    </Reference>
-    <Reference Include="Roniz.WCF.P2P.Messages, Version=1.0.0.20, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\P2PSync.1.0.0.22\lib\NET40\Roniz.WCF.P2P.Messages.dll</HintPath>
-    </Reference>
-    <Reference Include="Roniz.WCF.P2P.Sync, Version=1.0.0.20, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\P2PSync.1.0.0.22\lib\NET40\Roniz.WCF.P2P.Sync.dll</HintPath>
-    </Reference>
-    <Reference Include="ServiceModelEx, Version=4.0.0.1, Culture=neutral, PublicKeyToken=d0f8277329bba7a0, processorArchitecture=MSIL">
-      <HintPath>..\packages\P2PSync.1.0.0.22\lib\NET40\ServiceModelEx.dll</HintPath>
+    <Reference Include="RestSharp, Version=106.0.0.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
+      <HintPath>..\packages\RestSharp.106.10.1\lib\net452\RestSharp.dll</HintPath>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
-    <Reference Include="System.IO.Compression" />
-    <Reference Include="System.Runtime.Serialization" />
-    <Reference Include="System.ServiceModel" />
-    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -64,13 +51,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ClipboardP2P.cs" />
-    <Compile Include="CopyNinja.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SkyNet.cs" />
+    <Compile Include="SkyNetGetData.cs" />
+    <Compile Include="SkyNetPostData.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
+    <None Include="SkyNetLib.snk" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

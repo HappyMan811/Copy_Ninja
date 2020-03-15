@@ -9,9 +9,9 @@ namespace UnitTestProject1
         [TestMethod]
         public void TestMethod1()
         {
-            var content = SkyNet.Copy("https://siasky.net/skynet/skyfile/", "", "4a6635f5e6554692a908c7a4945ea798", "clipboard", @"C:\Users\Khanimamba\Desktop\Cake\New folder\Capture.PNG");
+            var content = SkyNet.Copy("https://siasky.net/skynet/skyfile/", "clipboard", @"C:\Users\Khanimamba\Desktop\Cake\New folder\Example.txt");
 
-            SkyNet.Paste("https://siasky.net/", "", "4a6635f5e6554692a908c7a4945ea798", content.skylink);
+            SkyNet.Paste("https://siasky.net/", content);
         }
     }
 }

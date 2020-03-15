@@ -1,5 +1,4 @@
 ﻿using RestSharp;
-using RestSharp.Authenticators;
 using System.IO;
 using System.Linq;
 
@@ -20,7 +19,7 @@ namespace Implementation
         {
             var Jsondata = SkyNetPost(url, filename, localPath);
 
-            var PostData = SimpleJson.SimpleJson.DeserializeObject<SkyNetPostData>(Jsondata);
+            var PostData = SimpleJson.DeserializeObject<SkyNetPostData>(Jsondata);
 
             return PostData.skylink;
         }
@@ -84,7 +83,7 @@ namespace Implementation
         {
             var client = new RestClient(url)
             {
-                UserAgent = "Sia-Agent"                
+                UserAgent = "Sia-Agent"
             };
 
             var request = new RestRequest()
@@ -100,8 +99,7 @@ namespace Implementation
 
             var response = client.Execute(request);
 
-            var SkyNetGetData = SimpleJson.SimpleJson
-                                          .DeserializeObject<SkyNetGetData>(response.Headers
+            var SkyNetGetData = SimpleJson.DeserializeObject<SkyNetGetData>(response.Headers
                                                                                     .First(element => element.Name == "Skynet-File-Metadata")
                                                                                     .Value.ToString());
 

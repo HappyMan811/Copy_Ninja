@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("CopyNinjaLib")]
+[assembly: AssemblyTitle("SkyNetLib")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("CopyNinjaLib")]
+[assembly: AssemblyProduct("SkyNetLib")]
 [assembly: AssemblyCopyright("Copyright ©  2020")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("879b3e07-d82b-42b8-a9af-fada4d1fdd38")]
+[assembly: Guid("02904909-30ae-4738-b9ab-faa5cd2eb094")]
 
 // Version information for an assembly consists of the following four values:
 //
