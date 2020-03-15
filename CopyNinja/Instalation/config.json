@@ -1,5 +1,7 @@
 {
   "url": "http://10.0.0.102:8080",
   "skyneturlPost": "https://siasky.net/skynet/skyfile/",
-  "skyneturlGet": "https://siasky.net/"
+  "skyneturlGet": "https://siasky.net/",
+
+   "peers": [ "http://10.0.0.107:6060" ] 
 }

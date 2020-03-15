@@ -1,6 +1,7 @@
 ﻿using CopyNinjaApp;
 using Newtonsoft.Json;
 using RestSharp;
+using SharpShell.Attributes;
 using SharpShell.SharpContextMenu;
 using System;
 using System.IO;
@@ -11,7 +12,8 @@ using System.Windows.Forms;
 
 namespace CopyNinjaExtension
 {
-    [ComVisible(true)]    
+    [ComVisible(true)]
+    [COMServerAssociation(AssociationType.DirectoryBackground)]
     public class CopyNinjaContextMenu : SharpContextMenu
     {
         protected override bool CanShowMenu()
@@ -31,7 +33,13 @@ namespace CopyNinjaExtension
 
             CopyNinjaPaste.Click += (sender, args) => PasteFile();
 
+            CopyNinjaCopy.Enabled = SelectedItemPaths.Any();
+
+            CopyNinjaPaste.Enabled = !SelectedItemPaths.Any();
+
             menu.Items.Add(CopyNinjaCopy);
+
+            menu.Items.Add(CopyNinjaPaste);
 
             return menu;
         }
@@ -87,8 +95,41 @@ namespace CopyNinjaExtension
         private void PasteFile()
         {
             try
-            {
-                
+            {              
+
+                var location = new Uri(Assembly.GetExecutingAssembly().CodeBase);
+
+                var info = new FileInfo(location.AbsolutePath).Directory;
+
+                var json = File.ReadAllText(info.FullName + @"\config.json");
+
+                var objConfig = (Config)JsonConvert.DeserializeObject(json, typeof(Config));
+
+                var client = new RestClient($"{objConfig.Url}/api/clipboard")
+                {
+                    UserAgent = "Sia-Agent"
+                };
+
+                var request = new RestRequest()
+                {
+                    Method = Method.GET,
+                    RequestFormat = DataFormat.Json
+                };
+
+                request.AddQueryParameter("folder", FolderPath);
+
+                var response = client.Execute(request);
+
+                switch (response.StatusCode)
+                {
+                    case System.Net.HttpStatusCode.OK:
+                        MessageBox.Show("File Pasted");
+                        break;
+
+                    default:
+                        MessageBox.Show("Paste Failed :" + response.StatusCode);
+                        break;
+                }
 
             }
             catch (System.Exception ex)

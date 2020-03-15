@@ -1,66 +1,62 @@
 ﻿using Implementation;
 using Newtonsoft.Json;
 using RestSharp;
-using System.Collections.Generic;
 using System.IO;
 using System.Web.Http;
-using System.Windows.Forms;
 
 namespace CopyNinjaApp.Controllers
 {
     public class ClipboardController : ApiController
-    {
-        // GET api/demo 
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "Hello", "World" };
-        }
+    {        
 
-        // GET api/demo/5 
-        public string Get(int id)
+        public string Get(string folder)
         {
-            return "Hello, World!";
-        }
+            var config = JsonConvert.DeserializeObject<Config>(File.ReadAllText("config.json"));
 
-        // POST api/demo 
+            var value = File.ReadAllText(@"clipboard\skyclipboard.txt");
+
+            var tuple = SkyNet.Paste($"{config.SkynetUrlGet}", value);
+
+            File.WriteAllBytes($@"{folder}\{tuple.Item1}", tuple.Item2);
+
+            return $@"{folder}\{tuple.Item1}";
+        }
+       
         public string Post([FromBody]string value)
         {
             var config = JsonConvert.DeserializeObject<Config>(File.ReadAllText("config.json"));
 
             var content = SkyNet.Copy($"{config.SkynetUrlPost}", "clipboard", value);
 
-            var client = new RestClient($"http://localhost:54085/api/clipboard")
+            foreach (var peer in config.Peers)
             {
-                UserAgent = "Sia-Agent"
-            };
+                var client = new RestClient($"{peer}/api/clipboard")
+                {
+                    UserAgent = "Sia-Agent"
+                };
 
-            var request = new RestRequest()
-            {
-                Method = Method.PUT,
-                RequestFormat = DataFormat.Json
-            };
+                var request = new RestRequest()
+                {
+                    Method = Method.PUT,
+                    RequestFormat = DataFormat.Json
+                };
 
-            request.AddJsonBody(content);
+                request.AddJsonBody(content);
 
-            var response = client.Execute(request);
+                var asd = client.Execute(request);
+            }          
             
             return content;
         }
-
-        // PUT api/demo/5 
+        
         public void Put([FromBody]string value)
         {
-            var config = JsonConvert.DeserializeObject<Config>(File.ReadAllText("config.json"));
+            if (!Directory.Exists("clipboard"))
+            {
+                Directory.CreateDirectory("clipboard");
+            }
 
-            var tuple = SkyNet.Paste($"{config.SkynetUrlGet}", value);
-
-            Clipboard.SetData(DataFormats.FileDrop, tuple.Item2);
-
-        }
-
-        // DELETE api/demo/5 
-        public void Delete(int id)
-        {
+            File.WriteAllText(@"clipboard\skyclipboard.txt", value);            
         }
     }
 
