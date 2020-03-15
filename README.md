@@ -4,6 +4,7 @@ This is a copy-paste tool that will enable users to copy and paste files across 
 This is a windows application that runs on Dot net framework 4.6.1
 
 #How it works 
+
 Application uploads a file to skynet and then distributes the skylink to all the peers that are on the peerlist , also running copyninja
 
 when you paste then it downloads the file via the distributed skylik
