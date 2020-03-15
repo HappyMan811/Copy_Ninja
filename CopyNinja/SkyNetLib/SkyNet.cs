@@ -1,4 +1,5 @@
 ﻿using RestSharp;
+using System;
 using System.IO;
 using System.Linq;
 
@@ -31,9 +32,9 @@ namespace Implementation
         /// <param name="username"></param>
         /// <param name="password"></param>
         /// <param name="skylink"></param>
-        public static void Paste(string url, string skylink)
+        public static Tuple<string,byte[]> Paste(string url, string skylink)
         {
-            SkyNetGet(url, skylink);
+            return SkyNetGet(url, skylink);
         }
 
         /// <summary>
@@ -79,7 +80,7 @@ namespace Implementation
         /// <param name="username"></param>
         /// <param name="password"></param>
         /// <param name="skylink"></param>
-        private static void SkyNetGet(string url, string skylink)
+        private static Tuple<string, byte[]> SkyNetGet(string url, string skylink)
         {
             var client = new RestClient(url)
             {
@@ -103,7 +104,7 @@ namespace Implementation
                                                                                     .First(element => element.Name == "Skynet-File-Metadata")
                                                                                     .Value.ToString());
 
-            File.WriteAllBytes(SkyNetGetData.filename, response.RawBytes);
+            return new Tuple<string, byte[]>(SkyNetGetData.filename, response.RawBytes);
         }
 
     }
