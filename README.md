@@ -23,6 +23,6 @@ this will add the shell extension on windows
 
 when you right click on a file you will see an option to copy file onto skynet 
 
-when for message box 
+wait for message box 
 
 head over to peer and then right click any where then paste from skynet 
